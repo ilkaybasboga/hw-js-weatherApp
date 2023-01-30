@@ -37,13 +37,17 @@ let btn = document.getElementById("button-addon1");
 let card1=document.getElementById("card1")
 
 form.addEventListener("submit", (e) => {
+if(input.value==""){
+  alert("Please! Enter the city you want to know the weather forecast for")
+}else{
+
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=2fbafbe3eb671e5aaa277f9324a67ddf&units=metric`
   )
     .then((res) => res.json())
     .then((x) => getWheater(x))
     .catch((err) => console.log(err));
-
+}
   e.preventDefault();
 });
 
