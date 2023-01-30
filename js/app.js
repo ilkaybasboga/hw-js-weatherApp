@@ -61,8 +61,10 @@ function getWheater(data) {
   const cityTempFeel = document.createElement("p");
   city.appendChild(cityTempFeel);
   const cityPres = document.createElement("p");
+  cityPres.className="d-none d-sm-none"
   city.appendChild(cityPres);
   const cityWind = document.createElement("p");
+  cityWind.className="d-none d-sm-none"
   city.appendChild(cityWind);
   const cityNameRe = data.name.split(" ")[0];
   console.log(cityNameRe);
