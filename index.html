@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid m-0 p-0">
+      <nav class="navbar bg-danger-subtle">
+        <form class="container justify-content-between p-2">
+          <button class="btn btn-outline-danger me-2" type="button" href="#weather1">
+            How's the weather?
+          </button>
+          <div>
+            <button class="btn btn-sm btn-outline-dark" type="button" href="#date">
+              What is the date?
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" href="#time">
+              What time is it?
+            </button>
+          </div>
+        </form>
+      </nav>
+    </div>
+    <div class="container date-time d-flex ">
+        <div class="container text-center bg-body-tertiary">
+            <h1 id="date" class="text-danger">DATE</h1>
+            <a
+              href="#"
+              class="date display-3 text-decoration-none text-dark font-monospace"
+            ></a>
+          </div>
+          <div id="time" class="container text-center bg-dark p-3">
+            <h1 class="text-light">TİME</h1>
+            <div class="clock">
+              <a
+                href="#"
+                class="hour display-3 bg-body-secondary text-decoration-none text-dark font-monospace border border-5 border-light mb-3"
+                ></a
+              >
+              <a
+                href="#"
+                class="minute display-3 bg-body-secondary text-decoration-none text-secondary font-monospace border border-5 border-light mb-3"
+                ></a
+              >
+              <a
+                href="#"
+                class="second display-3 bg-body-secondary text-decoration-none text-danger font-monospace border border-5 border-light mb-3"
+                ></a
+              >
+            </div>
+          </div>
+    </div>
+
+    <div id="weather" class="container-fluid weather  d-block text-center">
+      <h3 id="weather1"  class="display-6 fw-bold p-1">WEATHER</h3> 
+      <form id="form" class="form-control m-auto w-50 h-25 bg-body-emphasis border border-0">
+               <div class="input-group mb-3 ">
+      <input id="input"  type="text" class="form-control bg-body-secondary" placeholder="City..." aria-label="Recipient's username" aria-describedby="button-addon1">
+      <button id="button-addon1" class="btn btn-outline-secondary bg-warning text-dark fw-bolder" type="submit" >Button</button>
+    </div>
+          </form>
+    </div>
+   
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
