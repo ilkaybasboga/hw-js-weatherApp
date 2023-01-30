@@ -34,6 +34,7 @@ let weather = document.getElementById("weather");
 let form = document.getElementById("form");
 let input = document.getElementById("input");
 let btn = document.getElementById("button-addon1");
+let card1=document.getElementById("card1")
 
 form.addEventListener("submit", (e) => {
   fetch(
@@ -49,38 +50,43 @@ form.addEventListener("submit", (e) => {
 function getWheater(data) {
   console.log(data);
 
-  const city = document.createElement("div");
-  form.appendChild(city);
-  city.className="fw-bold display-5 text-start"
+const card = document.createElement("div");
+card.className="card m-1 col-6 col-sm-4 col-lg-2 bg-secondary text-start"
+card1.prepend(card)
+
+ 
+  const cardBody = document.createElement("div");
+  card.appendChild(cardBody);
+  cardBody.className="card-body bg-secondary m-1 w-100"
 
   const cityName = document.createElement("h");
-  city.appendChild(cityName);
+  cardBody.appendChild(cityName);
   cityName.className="text-warning my-1 text-uppercase text-center"
   const cityTemp = document.createElement("p");
-  city.appendChild(cityTemp);
+  cardBody.appendChild(cityTemp);
   const cityTempFeel = document.createElement("p");
-  city.appendChild(cityTempFeel);
+  cardBody.appendChild(cityTempFeel);
   const cityPres = document.createElement("p");
-  cityPres.className="d-none d-sm-none"
-  city.appendChild(cityPres);
+  cityPres.className="d-none d-sm-none d-md-block"
+  cardBody.appendChild(cityPres);
   const cityWind = document.createElement("p");
-  cityWind.className="d-none d-sm-none"
-  city.appendChild(cityWind);
+  cityWind.className="d-none d-sm-none d-md-block"
+  cardBody.appendChild(cityWind);
   const cityNameRe = data.name.split(" ")[0];
   console.log(cityNameRe);
   cityName.innerHTML = `
-    City:${cityNameRe}`;
+    City :${cityNameRe}`;
   cityTemp.innerHTML = `
-    Temperature:${data.main.temp} °C`;
+    Temp :${data.main.temp} °C`;
   cityTempFeel.innerHTML = `
-    Feels Like Temp:${data.main.feels_like} °C`;
+    Feels Temp:${data.main.feels_like} °C`;
   cityPres.innerHTML = `
-    Pressure:${data.main.pressure} mmHg`;
+    Press:${data.main.pressure} mmHg`;
   cityWind.innerHTML = `
     Wind:${data.wind.speed} knot`;
 
-    setTimeout(()=>{
-      city.innerHTML="";
+    
+      
       input.value=""
-    },5000)
+   
 }
