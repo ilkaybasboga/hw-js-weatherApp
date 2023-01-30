@@ -67,10 +67,10 @@ card1.prepend(card)
   const cityTempFeel = document.createElement("p");
   cardBody.appendChild(cityTempFeel);
   const cityPres = document.createElement("p");
-  cityPres.className="d-none d-sm-none d-md-block"
+  // cityPres.className="d-none d-sm-none d-md-block"
   cardBody.appendChild(cityPres);
   const cityWind = document.createElement("p");
-  cityWind.className="d-none d-sm-none d-md-block"
+  // cityWind.className="d-none d-sm-none d-md-block"
   cardBody.appendChild(cityWind);
   const cityNameRe = data.name.split(" ")[0];
   console.log(cityNameRe);
