@@ -11,6 +11,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/aes.js"></script>
+    <script src="js/Extentions.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container-fluid m-0 p-0">
@@ -51,33 +54,17 @@
       </div>
     </div>
 
-    <div id="weather" class="container-fluid weather ">
+    <div id="weather" class="container-fluid text-center ">
       <h3 id="weather1" class="display-6 fw-bold text-center p-1">WEATHER</h3>
-      <form
-        id="form"
-        class="form-control m-auto w-50 h-25 bg-body-emphasis border border-0"
-      >
-        <div class="input-group mb-3">
-          <input
-            id="input"
-            type="text"
-            class="form-control bg-body-secondary"
-            placeholder="City..."
-            aria-label="Recipient's username"
-            aria-describedby="button-addon1"
-          />
-          <button
-            id="button-addon1"
-            class="btn btn-outline-secondary bg-warning text-dark fw-bolder"
-            type="submit"
-          >
-            Button
-          </button>
-        </div>
-      </form>
-      <div id="card1" class="row d-flex justify-content-center">
+      <form id="form" >
+        <input type="text" id="input" placeholder="Search for a city" class="w-25 fw-bold rounded-3 fs-3 p-1" autofocus>
+        <button type="submit" id="btn" class="fw-bold rounded-3 fs-3 p-1">SUBMIT</button>
         
-
+      </form>
+      <span class="msg m-3 fs-3 text-danger-emphasis"></span>
+      <div class="container d-flex justify-content-center mt-4 ">
+        <ul class="cities d-flex ">
+        </ul>
       </div>
     </div>
 

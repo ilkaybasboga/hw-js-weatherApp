@@ -30,67 +30,89 @@ setInterval(function () {
 
 // *************weather************** */
 
-let weather = document.getElementById("weather");
+
 let form = document.getElementById("form");
 let input = document.getElementById("input");
-let btn = document.getElementById("button-addon1");
-let card1=document.getElementById("card1")
+let msg = document.querySelector(".msg");
+const list = document.querySelector(".container .cities");
+
+
+// localStorage.setItem("apiKey", EncryptStringAES("bd2dd23230ccd5427526d0bce0a617c4"));
+
 
 form.addEventListener("submit", (e) => {
-if(input.value==""){
-  alert("Please! Enter the city you want to know the weather forecast for")
-}else{
-
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=2fbafbe3eb671e5aaa277f9324a67ddf&units=metric`
-  )
-    .then((res) => res.json())
-    .then((x) => getWheater(x))
-    .catch((err) => console.log(err));
-}
   e.preventDefault();
+  
+  getWheater();
+
+  e.currentTarget.reset()
 });
 
-function getWheater(data) {
-  console.log(data);
+const getWheater = async () =>{
+const apiKey=DecryptStringAES(localStorage.getItem("apiKey"));
+// console.log(apiKey)
 
-const card = document.createElement("div");
-card.className="card m-1 col-6 col-sm-4 col-lg-2 bg-secondary text-start"
-card1.prepend(card)
+const cityName = input.value;
+// console.log(cityName)
+const units = "metric";
+const lang = "tr";
 
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}&lang=${lang}`;
+
+
+try{
+        const response = await fetch(url).then(response=>response.json());
+
+  // const response = await axios(url);
+  // console.log(response)
+
+  //---------------destruction-------------
+  const {main,name,sys,weather,wind}=response
+  
+  //----------------icon------------------
+  const iconUrlAWS = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
+
+
+  //------------------------takrarı engelle--------------
+  const cityNameSpans = list.querySelectorAll("span");
+
+  if(cityNameSpans.length>0){
+    const filtArr=[...cityNameSpans].filter(span => span.innerHTML==name);
+    if(filtArr.length>0){
+      msg.innerHTML=`⛔⛔⛔You already know the weather for ${name}, Please search for another city `;
+      setTimeout(() => { msg.innerText = "" }, 5000);
+      return;
+    }
+  }
+
+  //------------------------kart yapısı--------------
+
+  const itemLi=document.createElement("li")
+  itemLi.classList.add("city")
+  itemLi.classList.add("mx-3")
+  itemLi.classList.add("text-warning")
+  itemLi.classList.add("bg-secondary")
+  itemLi.classList.add("p-3")
+  itemLi.classList.add("rounded-3")
+  
+
+  itemLi.innerHTML=` <h2 class="city-name" data-name="${name},${sys.country}">
+  <span>${name}</span>
+  <sup>${sys.country}</sup> </h2>
+  <div class="city-temp fs-3">${Math.round(main.temp)}<sup>°C</sup></div>
+  <figure>
+  <img class="city-icon" src="${iconUrlAWS}">
+  <figcaption>${weather[0].description}</figcaption>
+</figure> <span>Rüzgar:${wind.speed}knot</span>`;
+ list.prepend(itemLi);
+ itemLi.addEventListener("click", (e)=>{
  
-  const cardBody = document.createElement("div");
-  card.appendChild(cardBody);
-  cardBody.className="card-body bg-secondary m-1 w-100"
+  window.location.href = `https://openweathermap.org/find?q=${name}`;
+});
+} catch (error) {
 
-  const cityName = document.createElement("h");
-  cardBody.appendChild(cityName);
-  cityName.className="text-warning my-1 text-uppercase text-center"
-  const cityTemp = document.createElement("p");
-  cardBody.appendChild(cityTemp);
-  const cityTempFeel = document.createElement("p");
-  cardBody.appendChild(cityTempFeel);
-  const cityPres = document.createElement("p");
-  // cityPres.className="d-none d-sm-none d-md-block"
-  cardBody.appendChild(cityPres);
-  const cityWind = document.createElement("p");
-  // cityWind.className="d-none d-sm-none d-md-block"
-  cardBody.appendChild(cityWind);
-  const cityNameRe = data.name.split(" ")[0];
-  console.log(cityNameRe);
-  cityName.innerHTML = `
-    City :${cityNameRe}`;
-  cityTemp.innerHTML = `
-    Temp :${data.main.temp} °C`;
-  cityTempFeel.innerHTML = `
-    Feels Temp:${data.main.feels_like} °C`;
-  cityPres.innerHTML = `
-    Press:${data.main.pressure} mmHg`;
-  cityWind.innerHTML = `
-    Wind:${data.wind.speed} knot`;
+  msg.innerText = "City not found!";
+  setTimeout(() => { msg.innerText = "" }, 5000);
+}
 
-    
-      
-      input.value=""
-   
 }
