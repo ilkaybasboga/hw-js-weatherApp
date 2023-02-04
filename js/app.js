@@ -61,9 +61,9 @@ const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid
 
 
 try{
-        const response = await fetch(url).then(response=>response.json());
+        // const response = await fetch(url).then(response=>response.json());
 
-  // const response = await axios(url);
+  const response = await axios(url);
   // console.log(response)
 
   //---------------destruction-------------
