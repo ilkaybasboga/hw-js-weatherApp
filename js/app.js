@@ -37,7 +37,7 @@ let msg = document.querySelector(".msg");
 const list = document.querySelector(".container .cities");
 
 
-localStorage.setItem("apiKey",EncryptStringAES("2ca4f35d37fd69c61ebe1ba90aad25a7"))
+localStorage.setItem("apiKey",EncryptStringAES("5e10dba10bb523c8fe262455c0d2f744"))
 
 
 form.addEventListener("submit", (e) => {
