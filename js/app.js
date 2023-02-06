@@ -37,7 +37,7 @@ let msg = document.querySelector(".msg");
 const list = document.querySelector(".container .cities");
 
 
-// localStorage.setItem("apiKey", EncryptStringAES("bd2dd23230ccd5427526d0bce0a617c4"));
+localStorage.setItem("apiKey", EncryptStringAES("bd2dd23230ccd5427526d0bce0a617c4"));
 
 
 form.addEventListener("submit", (e) => {
@@ -61,9 +61,9 @@ const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid
 
 
 try{
-        // const response = await fetch(url).then(response=>response.json());
+        const response = await fetch(url).then(response=>response.json());
 
-  const response = await axios(url);
+  // const response = await axios(url);
   // console.log(response)
 
   //---------------destruction-------------

@@ -1,4 +1,4 @@
-﻿function EncryptStringAES(bd2dd23230ccd5427526d0bce0a617c4) {
+﻿function EncryptStringAES(text) {
     if (text != null) {
         var key = CryptoJS.enc.Utf8.parse('8080808080808080');
         var iv = CryptoJS.enc.Utf8.parse('8080808080808080');
@@ -18,7 +18,7 @@
 
 }
 
-function DecryptStringAES(bd2dd23230ccd5427526d0bce0a617c4) {
+function DecryptStringAES(text) {
     if (text != null) {
         var key = CryptoJS.enc.Utf8.parse('8080808080808080');
         var iv = CryptoJS.enc.Utf8.parse('8080808080808080');
