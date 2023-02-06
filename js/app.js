@@ -57,7 +57,7 @@ const cityName = input.value;
 const units = "metric";
 const lang = "tr";
 
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}&lang=${lang}`;
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=bd2dd23230ccd5427526d0bce0a617c4&units=${units}&lang=${lang}`;
 
 
 try{
