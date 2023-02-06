@@ -37,7 +37,7 @@ let msg = document.querySelector(".msg");
 const list = document.querySelector(".container .cities");
 
 
-// localStorage.setItem("apiKey", EncryptStringAES("bd2dd23230ccd5427526d0bce0a617c4"));
+localStorage.setItem("apiKey",EncryptStringAES("2ca4f35d37fd69c61ebe1ba90aad25a7"))
 
 
 form.addEventListener("submit", (e) => {
@@ -49,7 +49,7 @@ form.addEventListener("submit", (e) => {
 });
 
 const getWheater = async () =>{
-const apiKey="bd2dd23230ccd5427526d0bce0a617c4";
+  const apiKey = DecryptStringAES(localStorage.getItem("apiKey"));
 // console.log(apiKey)
 
 const cityName = input.value;
